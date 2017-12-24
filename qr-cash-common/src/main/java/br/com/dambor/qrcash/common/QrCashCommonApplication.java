@@ -1,4 +1,4 @@
-package br.com.dambor.qrcash.qrcashcommon;
+package br.com.dambor.qrcash.common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
