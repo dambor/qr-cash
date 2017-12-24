@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.dambor.qrcash</groupId>
-	<artifactId>qr-cash-user-service</artifactId>
+	<artifactId>qrcash-user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>qr-cash-user-service</name>
+	<name>qrcash-user-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -40,16 +40,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-devtools</artifactId>
 	        <optional>true</optional>
-	    </dependency>		
-		
+	    </dependency>
+
 		<dependency>
 			<groupId>br.com.dambor.qrcash</groupId>
-			<artifactId>qr-cash-common</artifactId>
+			<artifactId>qrcash-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
