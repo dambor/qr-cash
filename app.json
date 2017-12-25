@@ -1,10 +1,10 @@
 {
   title: "The Basics - Networking",
   description: "Your app fetched this from a remote endpoint!",
-- movies: [
+  - movies: [
     - {
-         title: "Star Wars",
-         releaseYear: "1977"
+        title: "Star Wars",
+        releaseYear: "1977"
       }
   ]
 }
