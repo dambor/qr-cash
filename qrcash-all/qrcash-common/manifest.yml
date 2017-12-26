@@ -1,0 +1,7 @@
+---
+applications:
+- name: qrcash-common
+  memory: 512M
+  instances: 1
+  buildpack: java_buildpack
+  target: target/qrcash-common-0.0.1-SNAPSHOT.jar
