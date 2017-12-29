@@ -3,6 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuetify from 'vuetify'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+
+Vue.use(Vuetify)
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
