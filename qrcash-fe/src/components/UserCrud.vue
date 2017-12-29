@@ -5,7 +5,7 @@
           v-bind:headers="headers"
           :items="users"
           hide-actions
-          class="elevation-1"
+          class="elevation-5"
         >
         <template slot="items" slot-scope="props">
           <td class="text-xs-right">{{ props.item.id }}</td>
@@ -13,6 +13,7 @@
           <td class="text-xs-left">{{ props.item.password }}</td>
         </template>
     </v-data-table>
+    {{users}}
   </div>
 </template>
 
