@@ -4,4 +4,4 @@ applications:
   memory: 1G
   instances: 1
   buildpack: java_buildpack
-  path: target/qrcash-user-service-0.0.1-SNAPSHOT.jar
+  path: target/qrcash-user-service-1.5.9.RELEASE.jar

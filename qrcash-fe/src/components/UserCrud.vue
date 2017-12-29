@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <b>Email:</b> {{users[0].email}}
     <v-data-table
           v-bind:headers="headers"
           :items="users"
@@ -9,11 +8,10 @@
         >
         <template slot="items" slot-scope="props">
           <td class="text-xs-right">{{ props.item.id }}</td>
-          <td class="text-xs-left">{{ props.item.email }}</td>
-          <td class="text-xs-left">{{ props.item.password }}</td>
+          <td class="text-xs-right">{{ props.item.email }}</td>
+          <td class="text-xs-right">{{ props.item.password }}</td>
         </template>
-    </v-data-table>
-    {{users}}
+    </v-data-table>    
   </div>
 </template>
 
