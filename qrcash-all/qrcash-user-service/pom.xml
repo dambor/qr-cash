@@ -5,9 +5,10 @@
 
 	<artifactId>qrcash-user-service</artifactId>
 	<packaging>jar</packaging>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<name>qrcash-user-service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Services for User entity</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -20,6 +21,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+	    <downloadSources>true</downloadSources>
+	    <downloadJavadocs>true</downloadJavadocs>		
 	</properties>
 
 	<dependencies>
@@ -38,6 +41,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 	        <groupId>org.springframework.boot</groupId>
@@ -49,8 +58,13 @@
 			<groupId>br.com.dambor.qrcash</groupId>
 			<artifactId>qrcash-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
+		
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 	</dependencies>
 
 	<build>

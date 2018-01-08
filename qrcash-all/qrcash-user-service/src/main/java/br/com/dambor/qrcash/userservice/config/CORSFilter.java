@@ -10,26 +10,30 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
  
 /**
  * Servlet Filter implementation class CORSFilter
  */
-// Enable it for Servlet 3.x implementations
-/* @ WebFilter(asyncSupported = true, urlPatterns = { "/*" }) */
+@Component
+@Order(0)
 public class CORSFilter implements Filter {
  
+	private Logger log = LoggerFactory.getLogger(getClass());
     /**
      * Default constructor.
      */
     public CORSFilter() {
-        // TODO Auto-generated constructor stub
     }
  
     /**
      * @see Filter#destroy()
      */
     public void destroy() {
-        // TODO Auto-generated method stub
     }
  
     /**
@@ -39,7 +43,8 @@ public class CORSFilter implements Filter {
             throws IOException, ServletException {
  
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("CORSFilter HTTP Request: " + request.getMethod());
+        
+        log.debug("CORSFilter HTTP Request: " + request.getMethod());
  
         // Authorize (allow) all domains to consume the content
         ((HttpServletResponse) servletResponse).addHeader("Access-Control-Allow-Origin", "*");
