@@ -1,16 +1,20 @@
 package br.com.dambor.qrcash.common.domain;
 
+import java.time.LocalDateTime;
+
 /**
  * Used to access the application.
  * 
  * @author saulo.borges
  *
  */
+
 public class User {
 
 	private Long id;
 	private String email;
 	private String password;
+	private LocalDateTime createDate;
 	
 	public Long getId() {
 		return id;
@@ -31,12 +35,19 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
 	@Override
@@ -48,15 +59,20 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (password == null) {
-			if (other.password != null)
+		if (createDate == null) {
+			if (other.createDate != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!createDate.equals(other.createDate))
 			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		return true;
 	}
