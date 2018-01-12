@@ -1,7 +1,6 @@
 package br.com.dambor.qrcash.userservice.controller;
 
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,24 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.dambor.qrcash.common.domain.User;
-import br.com.dambor.qrcash.userservice.context.UserContext;
+import br.com.dambor.qrcash.userservice.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	private UserContext userContext;
+	private UserService userService;
 	
 	@GetMapping
-	public ResponseEntity<Set<User>> getUsers() {
-		return ResponseEntity.ok(userContext.findAll());
+	public ResponseEntity<Iterable<User>> getUsers() {
+		return ResponseEntity.ok(userService.findAll());
 	}
 
 	@GetMapping("/{email}")
 	public ResponseEntity<User> getUser(@PathVariable("email") String email) {
 	
-		Optional<User> user = userContext.findByEmail(email);
+		Optional<User> user = userService.findByEmail(email);
 		
 		if(user.isPresent()) {
 			return ResponseEntity.ok(user.get());
@@ -41,7 +40,7 @@ public class UserController {
 
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
-		User userCreated = userContext.createUser(user);
+		User userCreated = userService.save(user);
 		
 		return ResponseEntity.ok(userCreated);
 	}

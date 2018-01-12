@@ -2,6 +2,16 @@ package br.com.dambor.qrcash.common.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+
 /**
  * Used to access the application.
  * 
@@ -9,11 +19,26 @@ import java.time.LocalDateTime;
  *
  */
 
+@Entity
+@Table(schema="userservice", name="USER")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
+	
+	@NotNull
+	@Email
+	@Column(name = "email", nullable = false)
 	private String email;
+
+	@NotNull
+	@Column(name = "password", nullable = false)
 	private String password;
+
+	@NotNull
+	@Column(name = "create_date", nullable = false)
 	private LocalDateTime createDate;
 	
 	public Long getId() {
