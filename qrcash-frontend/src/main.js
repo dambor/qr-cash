@@ -11,13 +11,54 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
 import Vue from 'vue'
-import Quasar from 'quasar'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Quasar, {
+  dom,
+  event,
+  openURL,
+  QLayout,
+  QToolbar,
+  QToolbarTitle,
+  QBtn,
+  QIcon,
+  QList,
+  QListHeader,
+  QItem,
+  QItemSide,
+  QItemMain,
+  QCard,
+  QCardTitle,
+  QCardSeparator,
+  QCardMain,
+  QInput
+} from 'quasar'
 
 Vue.config.productionTip = false
-Vue.use(Quasar) // Install Quasar Framework
+Vue.use(Quasar, {
+  components: {
+    dom,
+    event,
+    openURL,
+    QLayout,
+    QToolbar,
+    QToolbarTitle,
+    QBtn,
+    QIcon,
+    QList,
+    QListHeader,
+    QItem,
+    QItemSide,
+    QItemMain,
+    QCard,
+    QCardTitle,
+    QCardSeparator,
+    QCardMain,
+    QInput
+  }
+})
+
 Vue.use(VueAxios, axios)
 
 if (__THEME === 'mat') {

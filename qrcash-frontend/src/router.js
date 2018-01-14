@@ -26,7 +26,7 @@ export default new VueRouter({
 
   routes: [
     { path: '/', component: load('Index') },
-    { path: '/signup', component: load('Signup') },
+    { path: '/signup', component: load('user/Signup') },
 
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
