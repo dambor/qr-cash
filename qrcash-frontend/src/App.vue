@@ -35,7 +35,6 @@
             </q-item>
           </q-list>
         </div>
-
       <router-view />
     </q-layout>
   </div>

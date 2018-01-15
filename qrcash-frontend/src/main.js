@@ -14,6 +14,7 @@ import Vue from 'vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueI18n from 'vue-i18n'
 import Quasar, {
   dom,
   event,
@@ -60,20 +61,29 @@ Vue.use(Quasar, {
 })
 
 Vue.use(VueAxios, axios)
+Vue.use(VueI18n)
 
 if (__THEME === 'mat') {
   require('quasar-extras/roboto-font')
 }
 import 'quasar-extras/material-icons'
 // import 'quasar-extras/ionicons'
-// import 'quasar-extras/fontawesome'
+import 'quasar-extras/fontawesome'
 // import 'quasar-extras/animate'
+import {messages} from 'components/MessageResources'
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: 'pt_BR', // set locale
+  messages // set locale messages
+})
 
 Quasar.start(() => {
   /* eslint-disable no-new */
   new Vue({
     el: '#q-app',
     router,
+    i18n,
     render: h => h(require('./App').default)
   })
 })

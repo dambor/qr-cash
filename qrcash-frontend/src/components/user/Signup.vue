@@ -1,8 +1,8 @@
 <template>
- <div>
+  <div>
     <q-card>
       <q-card-title>
-        Cadastro de Usuário
+        {{ $t("user.signup") }}
       </q-card-title>
       <q-card-separator />
       <q-card-main>
@@ -14,7 +14,7 @@
       
       </q-card-main>
     </q-card> 
- </div>
+  </div>
 </template>
 
 <script>
@@ -22,8 +22,11 @@
 export default {
   data () {
     return {
-      username
+      user: {
+        email: '',
+        password: ''
+      }
     }
   }
-}  
+}
 </script>
