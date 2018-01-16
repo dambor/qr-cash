@@ -25,8 +25,24 @@ export default new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
 
   routes: [
-    { path: '/', component: load('Index') },
-    { path: '/signup', component: load('user/Signup') },
+    { path: '/',
+      component: load('public/MasterPublic'),
+      children: [
+        {
+          path: '',
+          component: load('public/Index')
+        },
+        {
+          path: 'login',
+          component: load('public/user/Login')
+        },
+        {
+          path: 'signup',
+          component: load('public/user/Signup')
+        }
+      ]
+    },
+    { path: '/qrcash', component: load('private/MasterPrivado') },
 
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
