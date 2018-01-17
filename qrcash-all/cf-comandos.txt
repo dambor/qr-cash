@@ -1,0 +1,8 @@
+Login to the CLI
+$ cf login -a api.run.pivotal.io
+Get help in the CLI
+$ cf help
+Push an application
+$ cf push your_app
+Push qrcash-frontend
+$ cf push qrcash-frontend -b staticfile_buildpack -m 1G

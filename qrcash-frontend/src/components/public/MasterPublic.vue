@@ -10,7 +10,7 @@
         <div slot="subtitle">Dinheiro para os Desbancarizados do Brasil</div>
       </q-toolbar-title>
       
-      <q-btn @click="$router.push('/')" color="primary" no-caps="false">
+      <q-btn @click="$router.push('/')" color="primary" >
         Criar conta
       </q-btn>
       <!-- Autenticar -->
