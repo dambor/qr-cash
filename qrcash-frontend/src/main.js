@@ -12,9 +12,9 @@ require(`./themes/app.${__THEME}.styl`)
 
 import Vue from 'vue'
 import router from './router'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 import VueI18n from 'vue-i18n'
+import VueResource from 'vue-resource'
+import Vuelidate from 'vuelidate'
 import Quasar, {
   dom,
   event,
@@ -35,6 +35,7 @@ import Quasar, {
   QCardMain,
   QInput
 } from 'quasar'
+import GovernaInput from 'components/util/gInput'
 
 Vue.config.productionTip = false
 Vue.use(Quasar, {
@@ -59,9 +60,10 @@ Vue.use(Quasar, {
     QInput
   }
 })
-
-Vue.use(VueAxios, axios)
+Vue.use(VueResource)
 Vue.use(VueI18n)
+Vue.use(Vuelidate)
+Vue.component('g-input', GovernaInput)
 
 if (__THEME === 'mat') {
   require('quasar-extras/roboto-font')

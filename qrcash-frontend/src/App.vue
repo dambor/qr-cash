@@ -14,7 +14,7 @@ export default {}
 
 <style>
 body {
-  background: linear-gradient(#ffffff,#e6ffe6);
+  background: linear-gradient(#ffffff, #d7edc4);
 }
 
 .rodape {

@@ -1,6 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-xs-7 fixed-center">
+    <div class="offset-xs-1 col-xs-10 
+                offset-sm-2 col-sm-8
+                offset-md-3 col-md-6
+                self-center" style="margin-top: 10px">
       <q-card>
         <q-card-title style="background: #595959;" >
           
@@ -34,8 +37,6 @@
               >
                 <q-input v-model="text" float-label="Senha" />
               </q-field>
-
-
             </div>
           </div>
 
