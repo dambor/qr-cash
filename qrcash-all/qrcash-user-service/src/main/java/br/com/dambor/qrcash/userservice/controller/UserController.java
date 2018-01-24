@@ -2,6 +2,8 @@ package br.com.dambor.qrcash.userservice.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import br.com.dambor.qrcash.common.domain.User;
 import br.com.dambor.qrcash.userservice.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
 	@Autowired
@@ -39,7 +41,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
 		User userCreated = userService.save(user);
 		
 		return ResponseEntity.ok(userCreated);

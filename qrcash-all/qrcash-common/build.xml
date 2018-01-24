@@ -1,0 +1,29 @@
+<project name="qrcash-common" default="clean:install" basedir=".">
+
+	<target name="clean">
+		<exec executable="mvnw.cmd">
+			<arg value="clean" />
+		</exec>
+	</target>
+
+	<target name="clean:install">
+		<antcall target="clean" />
+		<exec executable="mvnw.cmd">
+			<arg value="clean" />
+		</exec>
+	</target>
+
+	<target name="eclipse:clean">
+		<exec executable="mvnw.cmd">
+			<arg value="eclipse:clean" />
+		</exec>
+	</target>
+	
+	<target name="eclipse:clean:eclipse">
+		<antcall target="eclipse:clean" />
+		<exec executable="mvnw.cmd">
+			<arg value="eclipse:eclipse" />
+		</exec>
+	</target>
+	
+</project>

@@ -37,7 +37,6 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@NotNull
 	@Column(name = "create_date", nullable = false)
 	private LocalDateTime createDate;
 	

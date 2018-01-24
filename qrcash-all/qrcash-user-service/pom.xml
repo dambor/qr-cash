@@ -31,7 +31,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>problem-spring-web</artifactId>
+            <version>0.22.1</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
@@ -69,12 +73,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.security.oauth</groupId> -->
+<!--             <artifactId>spring-security-oauth2</artifactId> -->
+<!--         </dependency> -->
+        <!-- Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
+        </dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.7</version>
+		</dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>qrcash-common</artifactId>
             <version>${project.version}</version>
         </dependency>
-
 	</dependencies>
 
 	<build>
