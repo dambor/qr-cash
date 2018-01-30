@@ -1,6 +1,6 @@
 package br.com.dambor.qrcash.userservice.service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,9 @@ public class UserService {
 	public User save(User user) {
 		if(user.getId() == null) {
 			// new user
-			user.setCreateDate(LocalDateTime.now());
+			user.setCreateDate(new Date());
 		}
+		
 		// Encrypt user password
 		user.setPassword(CryptUtil.encrypt(user.getPassword()));
 		return userRepo.save(user);

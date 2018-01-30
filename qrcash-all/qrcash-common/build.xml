@@ -9,7 +9,8 @@
 	<target name="clean:install">
 		<antcall target="clean" />
 		<exec executable="mvnw.cmd">
-			<arg value="clean" />
+			<arg value="install" />
+			<arg value="-Dmaven.test.skip=true" />
 		</exec>
 	</target>
 
@@ -21,9 +22,14 @@
 	
 	<target name="eclipse:clean:eclipse">
 		<antcall target="eclipse:clean" />
+		<antcall target="eclipse" />
+	</target>
+	
+	<target name="eclipse:eclipse">
 		<exec executable="mvnw.cmd">
 			<arg value="eclipse:eclipse" />
 		</exec>
 	</target>
+	
 	
 </project>

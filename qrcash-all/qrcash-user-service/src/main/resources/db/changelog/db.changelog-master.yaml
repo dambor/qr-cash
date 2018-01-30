@@ -5,3 +5,7 @@ databaseChangeLog:
       file: db/changelog/2018-01-10_2211-changelog.xml
   - include:
       file: db/changelog/2018-01-11_2146-changelog.xml
+  - include:
+      file: db/changelog/2018-01-27_1613-changelog.xml
+  - include:
+      file: db/changelog/2018-01-27_1714-changelog.xml

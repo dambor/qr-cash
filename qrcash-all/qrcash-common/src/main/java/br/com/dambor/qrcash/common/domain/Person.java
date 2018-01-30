@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author saulo.borges
  *
  */
-public class Person {
+public class Person extends BaseEntity {
 	
 	private Long id;
 	private Long cpf;
@@ -123,4 +123,5 @@ public class Person {
 			return false;
 		return true;
 	}
+	
 }

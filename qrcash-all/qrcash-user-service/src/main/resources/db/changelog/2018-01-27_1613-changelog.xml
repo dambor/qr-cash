@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="saulo.borges" id="2018-01-27_1635">
+		<createTable schemaName="userservice" tableName="USER_PROFILE">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_user" type="BIGINT" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+	</changeSet>
+	
+	<changeSet author="saulo.borges" id="2018-01-27_1636">
+	    <addForeignKeyConstraint baseColumnNames="id_user"
+	    		baseTableSchemaName="userservice"
+	            baseTableName="USER_PROFILE"
+	            constraintName="fk_user_profile"
+	            referencedTableSchemaName="userservice"
+	            referencedColumnNames="id"
+	            referencedTableName="USER"/>
+    </changeSet>
+</databaseChangeLog>

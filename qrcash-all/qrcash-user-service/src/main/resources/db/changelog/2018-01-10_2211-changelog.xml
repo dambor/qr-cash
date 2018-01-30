@@ -15,10 +15,11 @@
             <column name="username" type="VARCHAR(100)">
 				<constraints nullable="false"/>            
             </column>
-            <column name="password" type="VARCHAR(50)">
+            <column name="password" type="CHAR(60)">
                 <constraints nullable="false"/>
             </column>
-            <column name="create_date" type="DATETIME"/>
+            <column name="create_date" type="TIMESTAMP"/>
+            <column name="inactive_date" type="TIMESTAMP"/>
         </createTable>
 
 	</changeSet>
