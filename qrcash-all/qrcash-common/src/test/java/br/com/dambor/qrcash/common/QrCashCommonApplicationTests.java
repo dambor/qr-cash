@@ -1,3 +1,4 @@
+package br.com.dambor.qrcash.common;
 //package br.com.dambor.qrcash.qrcashcommon;
 //
 //import org.junit.Test;

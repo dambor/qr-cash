@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="now" value="CURRENT_TIMESTAMP()" dbms="h2"/>
+	<property name="now" value="now()" dbms="mysql"/>
+
+	<changeSet author="saulo.borges" id="2018-01-27_1715">
+		
+		<insert tableName="USER" schemaName="userservice">
+		    <column name="email" value="admin"/>
+		    <column name="password" value="$2a$10$pSwh/2o3ANNzUBndIAPrNepW0XDDYNqrPUC0CndedVfRYgkJzjKX2"/>
+		    <column name="create_date" valueComputed ="${now}"/>
+		</insert>		
+		
+	</changeSet>
+	
+	<changeSet author="saulo.borges" id="2018-01-27_1730">
+	    <addColumn schemaName="userservice"
+	            tableName="USER_PROFILE">
+	        <column name="profile" type="varchar(20)"/>
+	    </addColumn>
+	</changeSet>	
+		
+	<changeSet author="saulo.borges" id="2018-01-27_1743">
+		<sql>
+			INSERT INTO userservice.USER_PROFILE (id_user, profile) VALUES ((SELECT MAX (id) FROM userservice.USER), 'ADMIN')
+		</sql>
+	</changeSet>
+	
+	<changeSet author="saulo.borges" id="2018-01-28_1851">
+		<sql>
+			INSERT INTO userservice.USER_PROFILE (id_user, profile) VALUES ((SELECT MAX (id) FROM userservice.USER), 'ACTUATOR')
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>

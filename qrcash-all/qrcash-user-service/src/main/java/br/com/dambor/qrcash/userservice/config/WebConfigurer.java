@@ -8,12 +8,8 @@ import javax.servlet.ServletRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 /**
  * Configuration of web application with Servlet 3.0 APIs.
@@ -21,61 +17,64 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class WebConfigurer implements ServletContextInitializer {
 
-    private final Environment env;
-    
-    private String SPRING_PROFILE_DEVELOPMENT = "dev";
+	private static final String SPRING_PROFILE_DEVELOPMENT = "dev";
 
-    private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
-        
-    public WebConfigurer(Environment env) {
-        this.env = env;
-    }
+	private final Environment env;
 
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        if (env.getActiveProfiles().length != 0) {
-            log.info("Web application configuration, using profiles: {}", (Object[]) env.getActiveProfiles());
-        }
-        if (env.acceptsProfiles(SPRING_PROFILE_DEVELOPMENT)) {
-            initH2Console(servletContext);
-        }
-        log.info("Web application fully configured");
-    }
+	private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
 
+	public WebConfigurer(Environment env) {
+		this.env = env;
+	}
 
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        if (config.getAllowedOrigins() != null && !config.getAllowedOrigins().isEmpty()) {
-            log.debug("Registering CORS filter");
-            source.registerCorsConfiguration("/api/**", config);
-        }
-        return new CorsFilter(source);
-    }
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		if (env.getActiveProfiles().length != 0) {
+			log.info("Web application configuration, using profiles: {}", (Object[]) env.getActiveProfiles());
+		}
+//		if (env.acceptsProfiles(SPRING_PROFILE_DEVELOPMENT)) {
+//			initH2Console(servletContext);
+//		}
+		log.info("Web application fully configured");
+	}
 
-    /**
-     * Initializes H2 console.
-     */
-    private void initH2Console(ServletContext servletContext) {
-        log.debug("Initialize H2 console");
-        try {
-            // We don't want to include H2 when we are packaging for the "prod" profile and won't
-            // actually need it, so we have to load / invoke things at runtime through reflection.
-            ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            Class<?> servletClass = Class.forName("org.h2.server.web.WebServlet", true, loader);
-            Servlet servlet = (Servlet) servletClass.newInstance();
+	// @Bean
+	// public CorsFilter corsFilter() {
+	// UrlBasedCorsConfigurationSource source = new
+	// UrlBasedCorsConfigurationSource();
+	// CorsConfiguration config = new CorsConfiguration();
+	// if (config.getAllowedOrigins() != null &&
+	// !config.getAllowedOrigins().isEmpty()) {
+	// log.debug("Registering CORS filter");
+	// source.registerCorsConfiguration("/api/**", config);
+	// }
+	// return new CorsFilter(source);
+	// }
 
-            ServletRegistration.Dynamic h2ConsoleServlet = servletContext.addServlet("H2Console", servlet);
-            h2ConsoleServlet.addMapping("/h2-console/*");
-            h2ConsoleServlet.setInitParameter("-properties", "src/main/resources/");
-            h2ConsoleServlet.setLoadOnStartup(1);
-
-        } catch (ClassNotFoundException | LinkageError e) {
-            throw new RuntimeException("Failed to load and initialize org.h2.server.web.WebServlet", e);
-
-        } catch (IllegalAccessException | InstantiationException e) {
-            throw new RuntimeException("Failed to instantiate org.h2.server.web.WebServlet", e);
-        }
-    }
+	/**
+	 * Initializes H2 console.
+	 */
+//	private void initH2Console(ServletContext servletContext) {
+//		log.debug("Initialize H2 console");
+//		try {
+//			// We don't want to include H2 when we are packaging for the "prod" profile and
+//			// won't
+//			// actually need it, so we have to load / invoke things at runtime through
+//			// reflection.
+//			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+//			Class<?> servletClass = Class.forName("org.h2.server.web.WebServlet", true, loader);
+//			Servlet servlet = (Servlet) servletClass.newInstance();
+//
+//			ServletRegistration.Dynamic h2ConsoleServlet = servletContext.addServlet("H2Console", servlet);
+//			h2ConsoleServlet.addMapping("/h2-console/*");
+//			h2ConsoleServlet.setInitParameter("-properties", "src/main/resources/");
+//			h2ConsoleServlet.setLoadOnStartup(1);
+//
+//		} catch (ClassNotFoundException | LinkageError e) {
+//			throw new RuntimeException("Failed to load and initialize org.h2.server.web.WebServlet", e);
+//
+//		} catch (IllegalAccessException | InstantiationException e) {
+//			throw new RuntimeException("Failed to instantiate org.h2.server.web.WebServlet", e);
+//		}
+//	}
 }
